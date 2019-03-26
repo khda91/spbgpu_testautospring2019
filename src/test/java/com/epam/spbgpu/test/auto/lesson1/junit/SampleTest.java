@@ -14,7 +14,7 @@ public class SampleTest {
 
     @BeforeClass
     public static void classInit() {
-        System.out.println("SampleTest init");
+        System.out.println("SampleTest initDriver");
     }
 
     @Before

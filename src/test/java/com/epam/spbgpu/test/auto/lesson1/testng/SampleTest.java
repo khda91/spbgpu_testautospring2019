@@ -14,7 +14,7 @@ public class SampleTest {
 
     @BeforeClass
     public void classInit() {
-        System.out.println("SampleClass init");
+        System.out.println("SampleClass initDriver");
     }
 
     @BeforeMethod
