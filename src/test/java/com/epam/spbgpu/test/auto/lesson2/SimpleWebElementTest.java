@@ -1,5 +1,6 @@
 package com.epam.spbgpu.test.auto.lesson2;
 
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -15,12 +16,14 @@ import java.io.IOException;
 
 public class SimpleWebElementTest {
 
+    WebDriver driver;
+
     @Test
     public void loginMantisBt() {
         System.setProperty("webdriver.chrome.driver",
                 this.getClass().getClassLoader()
                         .getResource("webdriver/chrome/chromedriver.exe").getPath());
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         // Open Mantis
@@ -36,6 +39,7 @@ public class SimpleWebElementTest {
         try {
             driver.findElement(By.cssSelector("#password11231")).sendKeys("root");
         } catch (NoSuchElementException e) {
+            attachScreenshot();
             File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             try {
                 FileUtils.copyFile(file, new File("C:\tmp.png"));
@@ -46,11 +50,22 @@ public class SimpleWebElementTest {
         driver.findElement(By.xpath("//input[@value='Login']")).click();
 
         // Check login
+        attachScreenshot("My title");
         assertEquals(driver.getTitle(), "My Account - MantisBT");
         assertEquals(driver.findElement(By.className("user-info")).getText(),
                 "administrator");
 
         // Close driver
         driver.close();
+    }
+
+    @Attachment(value = "Screenshot", type = "image/png")
+    public byte[] attachScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+    @Attachment(value = "{0}", type = "image/png")
+    public byte[] attachScreenshot(String name) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

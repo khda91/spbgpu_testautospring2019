@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Example">
+
+    <test name="lesson2">
+        <classes>
+            <class name="com.epam.spbgpu.test.auto.lesson2.SimpleTest"/>
+            <class name="com.epam.spbgpu.test.auto.lesson2.SimpleWebElementTest"/>
+        </classes>
+    </test>
+
+    <test name="lesson3">
+        <classes>
+            <class name="com.epam.spbgpu.test.auto.lesson3.SimpleTestStaticPO"/>
+            <class name="com.epam.spbgpu.test.auto.lesson3.SimpleTestVoidPO"/>
+            <class name="com.epam.spbgpu.test.auto.lesson3.SimpleTestFluentPO"/>
+        </classes>
+    </test>
+
+    <test name="lesson4">
+        <packages>
+            <package name="com.epam.spbgpu.test.auto.lesson4"/>
+        </packages>
+    </test>
+
+    <test name="lesson5">
+        <packages>
+            <package name="com.epam.spbgpu.test.auto.lesson5"/>
+        </packages>
+    </test>
+
+</suite>
